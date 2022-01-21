@@ -26,7 +26,7 @@ jobs:
 
       - name: Lint, test and build (pull request)
         if: ${{ github.event_name == 'pull_request' }}
-        run: yarn && yarn turbo run build --since=
+        run: yarn && yarn turbo run build --since=${{ github.base_ref }}
 
       - name: Lint, test and build (push)
         if: ${{ github.event_name == 'push' }}
