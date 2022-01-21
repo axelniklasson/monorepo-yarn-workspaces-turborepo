@@ -7,6 +7,7 @@ const env = process.env.NODE_ENV;
 const app = express();
 app.use(morgan('combined'));
 const port = process.env.PORT || 3000;
+logger.DEBUG(`${name} starting`);
 
 app.get('/', (_, res) => {
   res.json({ ok: true, name, version });
