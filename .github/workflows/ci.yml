@@ -27,12 +27,17 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
+      - name: Extract out parent branch
+        shell: bash
+        run: echo "##[set-output name=parent_branch;]$(git show-branch -a | grep '\*' | grep -v `git rev-parse --abbrev-ref HEAD` | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//')"
+        id: extract_parent_branch
+
       - name: Install dependencies
         run: npm install -g yarn
 
       - name: Lint, test and build (push)
         if: ${{ github.event_name == 'push' }}
-        run: yarn && yarn turbo run build --since=origin/main
+        run: yarn && yarn turbo run build --since=${{ steps.extract_parent_branch.outputs.parent_branch }}
 
       - name: Lint, test and build (pull request)
         if: ${{ github.event_name == 'pull_request' }}
