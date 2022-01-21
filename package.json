@@ -4,11 +4,5 @@
     "apps/*",
     "packages/*"
   ],
-  "name": "monorepo-yarn-workspaces-lerna",
-  "devDependencies": {
-    "lerna": "^4.0.0"
-  },
-  "dependencies": {
-    "@scope/foo": "file:packages/foo"
-  }
+  "name": "monorepo-yarn-workspaces-turborepo"
 }

@@ -1,0 +1,15 @@
+{
+  "name": "@monorepo/simple-logger",
+  "main": "index.js",
+  "version": "1.0.0",
+  "scripts": {
+    "lint": "prettier --config ../../.prettierrc --ignore-path ../../.prettierignore -c './**/*.js'",
+    "format": "prettier --write --config ../../.prettierrc --ignore-path ../../.prettierignore -c './**/*.js'",
+    "test": "jest",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1"
+  }
+}

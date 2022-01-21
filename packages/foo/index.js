@@ -1,1 +1,0 @@
-export const foo = '"foo" imported from @axel/foo in a new version';
