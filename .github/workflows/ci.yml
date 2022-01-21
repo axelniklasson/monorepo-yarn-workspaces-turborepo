@@ -19,6 +19,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Install dependencies
-        run: npm install -g yarn@1.22.17
+        run: npm install -g yarn
       - name: Lint, test and build
         run: yarn && yarn turbo run build
