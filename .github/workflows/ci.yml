@@ -1,24 +1,44 @@
-name: Node.js CI
+name: CI workflow
 
 on:
   push:
-    branches: [ main ]
   pull_request:
-    branches: [ main ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [16.x, 17.x]
+
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - name: Extract out parent branch
+        shell: bash
+        run: echo "##[set-output name=parent_branch;]$(git show-branch -a | grep '\*' | grep -v `git rev-parse --abbrev-ref HEAD` | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//')"
+        id: extract_parent_branch
+
       - name: Install dependencies
         run: npm install -g yarn
-      - name: Lint, test and build
-        run: yarn && yarn turbo run build
+
+      - name: Lint, test and build (push)
+        if: ${{ github.event_name == 'push' }}
+        run: yarn && yarn turbo run build --since=${{ steps.extract_parent_branch.outputs.parent_branch }}
+
+      - name: Lint, test and build (pull request)
+        if: ${{ github.event_name == 'pull_request' }}
+        run: yarn && yarn turbo run build --since=origin/${{ github.base_ref }}
