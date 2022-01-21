@@ -7,6 +7,7 @@ describe('simple-logger', () => {
     expect(logger).toHaveProperty('INFO');
     expect(logger).toHaveProperty('WARN');
     expect(logger).toHaveProperty('ERROR');
+    expect(logger).toHaveProperty('CRITICAL');
   });
 
   test('it logs correctly', () => {
@@ -20,5 +21,9 @@ describe('simple-logger', () => {
     expect(consoleMock).toHaveBeenCalledWith(`[WARN]: warn message`);
     logger.ERROR('error message');
     expect(consoleMock).toHaveBeenCalledWith(`[ERROR]: error message`);
+    logger.CRITICAL('error message');
+    expect(consoleMock).toHaveBeenCalledWith(`[CRITICAL]: error message`);
+
+    expect(consoleMock).toHaveBeenCalledTimes(5);
   });
 });
