@@ -1,5 +1,4 @@
 const LEVELS = {
-  debug: 'DEBUG',
   info: 'INFO',
   warn: 'WARN',
   error: 'ERROR',
@@ -8,9 +7,6 @@ const LEVELS = {
 const logger = {
   _log: (level, text) => {
     console.log(`[${level}]: ${text}`);
-  },
-  DEBUG: (text) => {
-    logger._log(LEVELS.debug, text);
   },
   INFO: (text) => {
     logger._log(LEVELS.info, text);

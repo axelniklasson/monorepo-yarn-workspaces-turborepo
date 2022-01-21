@@ -10,7 +10,6 @@ const port = process.env.PORT || 3000;
 logger.DEBUG(`${name} starting`);
 
 app.get('/', (_, res) => {
-  logger.FOO(`${name} running in env ${env}`);
   res.json({ ok: true, name, version });
 });
 
