@@ -4,5 +4,35 @@
     "apps/*",
     "packages/*"
   ],
-  "name": "monorepo-yarn-workspaces-turborepo"
+  "name": "monorepo-yarn-workspaces-turborepo",
+  "devDependencies": {
+    "prettier": "^2.5.1",
+    "turbo": "^1.0.28"
+  },
+  "turbo": {
+    "baseBranch": "origin/main",
+    "pipeline": {
+      "build": {
+        "dependsOn": [
+          "^build",
+          "test"
+        ]
+      },
+      "test": {
+        "dependsOn": [
+          "lint"
+        ],
+        "outputs": []
+      },
+      "lint": {
+        "outputs": []
+      },
+      "dev": {
+        "cache": false
+      }
+    },
+    "globalDependencies": [
+      ".prettierrc"
+    ]
+  }
 }
