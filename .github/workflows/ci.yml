@@ -1,4 +1,4 @@
-name: Node.js CI
+name: CI workflow
 
 on:
   push:
@@ -8,25 +8,32 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [16.x, 17.x]
+
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+
       - name: Install dependencies
         run: npm install -g yarn
 
       - name: Lint, test and build (pull request)
         if: ${{ github.event_name == 'pull_request' }}
-        run: yarn && yarn turbo run build --since=${{ github.base_ref }}
+        run: yarn && yarn turbo run build --since=origin/${{ github.base_ref }}
 
       - name: Lint, test and build (push)
         if: ${{ github.event_name == 'push' }}
