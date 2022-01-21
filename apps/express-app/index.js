@@ -9,7 +9,7 @@ app.use(morgan('combined'));
 const port = process.env.PORT || 3000;
 
 app.get('/', (_, res) => {
-  res.json({ ok: 'true', name, version });
+  res.json({ ok: true, name, version });
 });
 
 if (env !== 'test') {
