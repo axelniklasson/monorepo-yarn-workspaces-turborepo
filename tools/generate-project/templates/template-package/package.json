@@ -1,5 +1,5 @@
 {
-  "name": "@monorepo/simple-logger",
+  "name": "@monorepo/__PROJECT_NAME__",
   "main": "index.js",
   "version": "1.0.0",
   "scripts": {
@@ -7,5 +7,7 @@
     "format": "prettier --write --config ../../.prettierrc --ignore-path ../../.prettierignore -c './**/*.js'",
     "test": "jest",
     "build": "webpack"
-  }
+  },
+  "dependencies": {},
+  "devDependencies": {}
 }
