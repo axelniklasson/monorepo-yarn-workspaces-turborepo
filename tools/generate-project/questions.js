@@ -21,7 +21,7 @@ export const questions = [
   {
     type: 'input',
     name: 'projectName',
-    message: "What's the name of the project",
+    message: "What's the name of the project?",
     validate(val) {
       return (val && val.length > 0) || 'Please enter a name';
     },
