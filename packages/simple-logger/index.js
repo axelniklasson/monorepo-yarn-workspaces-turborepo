@@ -3,6 +3,7 @@ const LEVELS = {
   info: 'INFO',
   warn: 'WARN',
   error: 'ERROR',
+  critical: 'CRITICAL',
 };
 
 const logger = {
@@ -20,6 +21,9 @@ const logger = {
   },
   ERROR: (text) => {
     logger._log(LEVELS.error, text);
+  },
+  CRITICAL: (text) => {
+    logger._log(LEVELS.critical, text);
   },
 };
 
