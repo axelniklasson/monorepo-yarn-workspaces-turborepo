@@ -39,7 +39,6 @@ Time:        0.818 s
 Ran all test suites.
 ✨  Done in 1.79s.
 ✨  Done in 2.02s.
-➜  monorepo-yarn-workspaces-turborepo git:(add-generator)
 ```
 
 ## Turbo pipeline
