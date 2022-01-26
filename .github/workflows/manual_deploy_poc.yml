@@ -1,0 +1,34 @@
+name: Manual deploy
+
+inputs:
+  project:
+    description: 'The project to deploy (corresponds to name in package.json)'
+    required: true
+  environment:
+    description: 'The environment to deploy to'
+    required: true
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 17.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Deploy
+        shell: bash
+        run: echo "Deploying {{ inputs.project }} to {{ inputs.environment }} env!"
