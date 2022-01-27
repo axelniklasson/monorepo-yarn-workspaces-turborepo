@@ -1,5 +1,5 @@
 # Monorepo with yarn workspaces and Turborepo
-This repo is a boilerplate for how a JS monorepo can be setup using [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) and [Turborepo](https://turborepo.org/) along with GitHub actions for CI.
+This repo is a boilerplate for how a JS monorepo can be setup using [yarn workspaces](https://classic.yarnpkg.com/lang/en/docs/workspaces/) and [Turborepo](https://turborepo.org/) along with GitHub actions for CI/CD and manual deployment triggers.
 
 ## Tooling
 ### generate-project
