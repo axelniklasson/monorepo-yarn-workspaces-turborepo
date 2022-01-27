@@ -1,9 +1,9 @@
-name: Deployment
+name: Manual deployment
 
 on:
   workflow_dispatch:
     inputs:
-      project:
+      project_name:
         description: The project to deploy (corresponds to name in package.json)
         required: true
       environment:
@@ -11,7 +11,7 @@ on:
         required: true
 
 jobs:
-  deploy:
+  manual_deploy:
     runs-on: ubuntu-latest
 
     strategy:
@@ -29,4 +29,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Deploy
-        run: echo "Deploying ${{ github.event.inputs.project }} to ${{ github.event.inputs.environment }}!"
+        run: echo "Deploying ${{ github.event.inputs.project_name }} to ${{ github.event.inputs.environment }}!"
