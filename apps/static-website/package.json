@@ -17,7 +17,8 @@
     "test": "react-scripts test --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "prettier --config ../../.prettierrc --ignore-path ../../.prettierignore -c './**/*.js'",
-    "format": "prettier --write --config ../../.prettierrc --ignore-path ../../.prettierignore -c './**/*.js'"
+    "format": "prettier --write --config ../../.prettierrc --ignore-path ../../.prettierignore -c './**/*.js'",
+    "deploy": "echo 'Deploying static-website!'"
   },
   "eslintConfig": {
     "extends": [

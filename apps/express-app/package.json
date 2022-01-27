@@ -14,7 +14,8 @@
     "dev": "NODE_ENV=development nodemon index.js",
     "start": "NODE_ENV=production node index.js",
     "test": "NODE_ENV=test jest",
-    "build": "webpack"
+    "build": "webpack",
+    "deploy": "echo 'Deploying express-app!'"
   },
   "devDependencies": {
     "nodemon": "^2.0.15",

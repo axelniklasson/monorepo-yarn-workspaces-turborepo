@@ -1,0 +1,39 @@
+name: CD
+
+on:
+  push:
+    tags:
+
+jobs:
+  cd:
+    if: ${{ github.event.base_ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x, 17.x]
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Extract project info
+        shell: bash
+        id: extract_project_info
+        run: |
+          echo "##[set-output name=project_name;]$(echo $GITHUB_REF | cut -d / -f 3)"
+          echo "##[set-output name=project_version;]$(echo $GITHUB_REF | cut -d / -f 4)"
+
+      - name: Install dependencies
+        run: npm install -g yarn && yarn
+
+      - name: Deploy
+        run: |
+          echo "Deploying ${{ steps.extract_project_info.outputs.project_name }} ${{ steps.extract_project_info.outputs.project_version }}!"
+          yarn turbo run deploy --scope=${{ steps.extract_project_info.outputs.project_name }}

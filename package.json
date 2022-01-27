@@ -20,6 +20,11 @@
   "turbo": {
     "baseBranch": "origin/main",
     "pipeline": {
+      "deploy": {
+        "dependsOn": [
+          "build"
+        ]
+      },
       "build": {
         "dependsOn": [
           "^build",
