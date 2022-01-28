@@ -28,5 +28,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+      - name: Install dependencies
+        run: npm install -g yarn && yarn
+
       - name: Deploy
-        run: echo "Deploying ${{ github.event.inputs.project_name }} to ${{ github.event.inputs.environment }}!"
+        run: |
+          echo "Deploying ${{ github.event.inputs.project_name }} to ${{ github.event.inputs.environment }}!"
+          yarn turbo run deploy --scope=${{ github.event.inputs.project_name }}
