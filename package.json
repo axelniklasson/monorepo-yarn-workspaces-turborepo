@@ -12,7 +12,7 @@
     "prettier": "^2.5.1",
     "turbo": "^1.0.28",
     "webpack": "^5.66.0",
-    "webpack-cli": "^4.9.1"
+    "webpack-cli": "^4.9.2"
   },
   "scripts": {
     "generate-project": "node ./tools/generate-project/generate.js"
