@@ -1,7 +1,7 @@
 apps:
 - apps/**/*
 dependencies:
-- any: ['**/*/package.json', '**/*/package-lock.json']
+- any: ['apps/**/*/package.json', '**/*/package-lock.json']
 documentation:
 - 'README.md'
 packages:
