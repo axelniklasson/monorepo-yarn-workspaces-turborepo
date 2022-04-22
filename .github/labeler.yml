@@ -1,10 +1,10 @@
 apps:
-- apps/*
+- apps/**/*
 dependencies:
 - any: ['package.json', 'package-lock.json']
 documentation:
 - 'README.md'
 packages:
-- packages/*
+- packages/**/*
 tools:
-- tools/*
+- tools/**/*
