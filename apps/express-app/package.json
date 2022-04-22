@@ -2,7 +2,7 @@
   "name": "express-app",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT",
+  "license": "no-license",
   "dependencies": {
     "@monorepo/simple-logger": "^1.0.0",
     "express": "^4.17.2",
