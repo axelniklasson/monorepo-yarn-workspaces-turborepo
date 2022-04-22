@@ -8,7 +8,7 @@ import { questions, PROJECT_TYPES } from './questions.js';
 const INVALID_TEMPLATE_FILES_PATTERNS = ['.log', '.DS_Store', 'node_modules'];
 const REPLACE_PATTERNS = [{ pattern: '__PROJECT_NAME__', answerKey: 'projectName' }];
 
-console.log('Hi, welcome to generate-project');
+console.log('Hi, welcome to generate-project ');
 
 // helper to create project path relative to monorepo root
 function getProjectPath(projectType, projectName) {
