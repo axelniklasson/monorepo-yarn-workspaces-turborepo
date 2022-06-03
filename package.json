@@ -7,8 +7,8 @@
   "name": "monorepo-yarn-workspaces-turborepo",
   "dependencies": {},
   "devDependencies": {
-    "@types/jest": "^27.4.0",
-    "jest": "^27.5.1",
+    "@types/jest": "^28.1.0",
+    "jest": "^28.1.0",
     "prettier": "^2.5.1",
     "turbo": "^1.0.28",
     "webpack": "^5.66.0",
